@@ -1,0 +1,206 @@
+/* MINIMAL-RESET */
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    list-style: none;
+}
+/* MINIMAL-RESET - FIN */
+
+/* VARIABLE */
+* {
+    --color-light : #ddd;
+    --color-dark : #333;
+    --color-success : #60d394;
+    --color-alert : #ec4b40;
+    --color-warning : #ffd97d;
+    --color-info : #5aa9e6;
+    --shadow-1 : 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    --shadow-2 : 0 14px 28px rgba(0,0,0,0.25), 0 5px 10px rgba(0,0,0,0.22);
+}
+/* VARIABLE - FIN */
+
+body {
+    position: relative;
+    height: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition: background-color 1s ease;
+    --color-body: var(--color-light); /* Couleur de fond par défaut */
+    background-color: var(--color-body);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-light);
+}
+
+header {
+    position: fixed;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 5rem;
+    width: 100%;
+    /* background-color: var(--color-dark); */
+    color: var(--color-light);
+    z-index: 1000;
+}
+
+header h1 {
+    margin-inline: 1rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+main {
+    max-height: 100vh;
+	overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+
+}
+.menu-btn {
+    margin-inline: 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--color-dark);
+    background-color: var(--color-light);
+    border: none;
+    outline: none;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.menu-btn-lines,
+.menu-btn-lines::before,
+.menu-btn-lines::after {
+    display: block;
+    content: "";
+    line-height: 0;
+    width: 30px;
+    height: 4px;
+    border-radius: 5px;
+    background-color: var(--color-dark);
+    transition: 0.5s;
+}
+.menu-btn-lines::before {
+    transform: translateY(-8px);
+}
+.menu-btn-lines::after {
+    transform: translateY(4px);
+}
+
+.menu-btn.active .menu-btn-lines {
+    transform: rotate(180deg);
+}
+
+.menu-btn.active .menu-btn-lines::before,
+.menu-btn.active .menu-btn-lines::after {
+    width: 15px;
+    height: 4px;
+}
+
+.menu-btn.active .menu-btn-lines::before {
+    transform: rotate(45deg) translate(9px, -15px);
+}
+
+.menu-btn.active .menu-btn-lines::after {
+    transform: rotate(-45deg) translate(12px, 12px);
+}
+
+
+.menu {
+    position: fixed;
+    left: -100vw;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--color-dark);
+    font-size: 4rem;
+    transition: 0.5s;
+    z-index: 999;
+
+}
+
+.menu ul {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    height: 100%;
+    padding-inline: 3rem;
+    padding-top: 5rem; /* hauteur du header */
+}
+
+.menu li {
+    margin-block: 3rem;
+    overflow: hidden;
+}
+
+.menu li a {
+    position: relative;
+    top: 100%;
+    opacity: 0;
+    text-transform: uppercase;
+}
+
+.active {
+    left: 0;
+    transition: 0.5s;
+}
+
+.active li a {
+    top: 0;
+    opacity: 1;
+    transition: 1.2s;
+}
+
+/* animation des élémwents d menuu en décalé */
+.active li:nth-child(1) a {
+    transition-delay: 0.3s;
+}
+.active li:nth-child(2) a {
+    transition-delay: 0.5s;
+}
+.active li:nth-child(3) a {
+    transition-delay: 0.7s;
+}
+.active li:nth-child(4) a {
+    transition-delay: 0.9s;
+}
+
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    min-height: 100vh;
+    color: var(--color-dark);
+    font-size: 3rem;
+    text-transform: uppercase;
+    scroll-snap-align: start;
+
+}
+
+#section-01 {
+    background-color: var(--color-success);
+    color: var(--color-light);
+}
+#section-02 {
+    background-color: var(--color-alert);
+    color: var(--color-light);
+}
+#section-03 {
+    background-color: var(--color-warning);
+    color: var(--color-dark);
+}
+#section-04 {
+    background-color: var(--color-info);
+    color: var(--color-light);
+}   
