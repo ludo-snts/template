@@ -56,11 +56,12 @@ header h1 {
 }
 
 main {
-    max-height: 100vh;
-	overflow-y: scroll;
+    height: 100vh;
+    overflow-y: auto; /* Permet le défilement vertical à l'intérieur de cet élément */
+    /* scroll-snap-type: y mandatory; */
     scroll-snap-type: y mandatory;
-
 }
+
 .menu-btn {
     margin-inline: 1rem;
     cursor: pointer;
@@ -174,7 +175,6 @@ main {
     transition-delay: 0.9s;
 }
 
-
 section {
     display: flex;
     justify-content: center;
@@ -185,8 +185,9 @@ section {
     font-size: 3rem;
     text-transform: uppercase;
     scroll-snap-align: start;
-
+    scroll-snap-stop: always; 
 }
+
 
 /* #section-01 {
     background-color: var(--color-success);
