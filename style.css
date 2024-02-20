@@ -28,7 +28,7 @@ body {
     height: 100%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     transition: background-color 1s ease;
-    --color-body: var(--color-light); /* Couleur de fond par défaut */
+    --color-body: var(--color-success); /* Couleur de fond par défaut */
     background-color: var(--color-body);
 }
 
@@ -188,7 +188,7 @@ section {
 
 }
 
-#section-01 {
+/* #section-01 {
     background-color: var(--color-success);
     color: var(--color-light);
 }
@@ -203,4 +203,4 @@ section {
 #section-04 {
     background-color: var(--color-info);
     color: var(--color-light);
-}   
+}    */

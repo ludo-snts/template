@@ -25,5 +25,29 @@ menu.addEventListener('click', (event) => {
     }
 });
 
-//TODO: changement du background-color des sections (smooth)
+//TODO: changement du background-color des sections (smooth) : OK smooth avec le css (body {transition: background-color 1s ease;})
 
+const mainElement = document.querySelector('main');
+const sections = mainElement.querySelectorAll('section');
+
+// Déterminer si la moitié d'un élément (section dans la fonction updateBackgroundColor ) est visible à l'écran
+function isHalfVisible(element) {
+    const elementTop = element.getBoundingClientRect().top;
+    const elementBottom = element.getBoundingClientRect().bottom;
+    const windowHeight = window.innerHeight;
+
+    return elementTop < windowHeight / 2 && elementBottom > windowHeight / 2;
+}
+
+// Mettre à jour la couleur du fond en fonction de la section visible
+function updateBackgroundColor() {
+    sections.forEach(section => {
+        if (isHalfVisible(section)) {
+            const sectionColor = section.getAttribute('data-color');
+            document.body.style.backgroundColor = `var(--color-${sectionColor})`;
+        }
+    });
+}
+
+// Écouteur d'événement de défilement pour appeler la fonction de mise à jour de la couleur du fond
+mainElement.addEventListener('scroll', updateBackgroundColor);
