@@ -6,6 +6,9 @@ const sections = mainElement.querySelectorAll('section');
 
 // Écouteur d'événement de défilement pour appeler la fonction de mise à jour de la couleur du fond
 mainElement.addEventListener('scroll', updateBackgroundColor);
+// Écouteur d'événement de survol pour appeler la fonction de mise à jour de la couleur du lien
+menu.addEventListener('mouseenter', updateLinkColor);
+menu.addEventListener('mouseleave', updateLinkColor);
 
 // revenir en haut de la page
 const titleBtn = document.getElementById('title');
@@ -18,11 +21,20 @@ titleBtn.addEventListener('click', (event) => {
     });
 });
 
-
 // menu
 menuBtn.addEventListener('click', () => {
     menuBtn.classList.toggle('active');
-    menu.classList.toggle('active');
+    if (menuBtn.classList.contains('active')) {
+        menu.classList.remove('inactive');
+        menu.classList.add('active');
+    } else {
+        menu.classList.remove('active');
+        menu.classList.add('inactive');
+    }
+    // apres un delai de 1s, retirer la class inactive
+    setTimeout(() => {
+        menu.classList.remove('inactive');
+    }, 1000);
 });
 
 // au clic sur élément du menu, fermer le menu
@@ -31,6 +43,8 @@ menu.addEventListener('click', (event) => {
     if (event.target.tagName === 'A') {
         menuBtn.classList.remove('active');
         menu.classList.remove('active');
+        menu.classList.add('inactive');
+
     }
 });
 
@@ -52,3 +66,24 @@ function updateBackgroundColor() {
         }
     });
 }
+
+//TODO: changement du color des liens du menu au hover : OK
+// Mettre à jour la couleur des liens au survol
+function updateLinkColor() {
+    const links = document.querySelectorAll('.menu a');
+    
+    links.forEach(link => {
+        const colorVariable = link.getAttribute('data-color');
+        
+        link.addEventListener('mouseenter', () => {
+            // Utiliser la variable de couleur CSS correspondant à la couleur spécifiée dans data-color
+            link.style.color = `var(--color-${colorVariable})`;
+        });
+
+        link.addEventListener('mouseleave', () => {
+            link.style.color = ''; // Rétablir la couleur par défaut
+        });
+    });
+}
+
+
