@@ -6,6 +6,8 @@ const sections = mainElement.querySelectorAll('section');
 
 // Écouteur d'événement de défilement pour appeler la fonction de mise à jour de la couleur du fond
 mainElement.addEventListener('scroll', updateBackgroundColor);
+// Écouteur d'événement de défilement pour appeler la fonction de mise à jour de la couleur du texte du h2
+mainElement.addEventListener('scroll', updateHeadingColor);
 // Écouteur d'événement de survol pour appeler la fonction de mise à jour de la couleur du lien
 menu.addEventListener('mouseenter', updateLinkColor);
 menu.addEventListener('mouseleave', updateLinkColor);
@@ -63,6 +65,17 @@ function updateBackgroundColor() {
         if (isHalfVisible(section)) {
             const sectionColor = section.getAttribute('data-color');
             document.body.style.backgroundColor = `var(--color-${sectionColor})`;
+        }
+    });
+}
+
+// Mettre à jour la couleur du texte du h2 en fonction de la section visible
+function updateHeadingColor() {
+    sections.forEach(section => {
+        const heading = section.querySelector('h2');
+        if (heading && isHalfVisible(section)) {
+            const colorVariable = heading.getAttribute('data-color');
+            heading.style.color = `var(--color-${colorVariable})`;
         }
     });
 }

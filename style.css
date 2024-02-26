@@ -23,14 +23,20 @@
 }
 /* VARIABLE - FIN */
 
+/* PERSONAL FONT */
+@font-face {
+    font-family: Heathergreen;
+    src: url("Heathergreen.otf") format("opentype");
+}
+/* PERSONAL FONT - FIN */
+
 body {
     position: relative;
     height: 100%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
     transition: background-color 1s ease;
     background-color: var(--color-success); /* Couleur de fond par défaut */
 }
-
 a {
     text-decoration: none;
     color: var(--color-light);
@@ -218,22 +224,14 @@ section {
     scroll-snap-stop: always; 
 }
 
-/* #section-01 {
-    background-color: var(--color-success);
-    color: var(--color-light);
+section h2 {
+    width: 100%;
+    margin-inline: 2rem;
+    text-align: center;
+    font-family: "Heathergreen", "Roboto Condensed", sans-serif;
+    font-size: clamp(2rem, 40vw, 60rem);
+     color: var(--color-dark); /* même couleur que le data-color du h2 de la section 01  */
 }
-#section-02 {
-    background-color: var(--color-alert);
-    color: var(--color-light);
-}
-#section-03 {
-    background-color: var(--color-warning);
-    color: var(--color-dark);
-}
-#section-04 {
-    background-color: var(--color-info);
-    color: var(--color-light);
-}    */
 
 
 
