@@ -83,7 +83,7 @@ function updateHeadingColor() {
 //TODO: changement du color des liens du menu au hover : OK
 // Mettre à jour la couleur des liens au survol
 function updateLinkColor() {
-    const links = document.querySelectorAll('.menu a');
+    const links = document.querySelectorAll('.menu-section a');
     
     links.forEach(link => {
         const colorVariable = link.getAttribute('data-color');
